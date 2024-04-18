@@ -1,1 +1,1 @@
-{"__resolveType":"site/sections/Hero.tsx","cta":[],"title":"<p>Rio de Janeiro</p>","placement":"left","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/7322/6c43a6cc-d134-4d05-96ba-ef7d6a0e3450"}
+{"__resolveType":"site/sections/Hero.tsx","cta":[{"href":"#about","text":"EXPLORE","outline":true}],"title":"<p>Rio de Janeiro</p>","placement":"left","background":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/7322/26f27ed6-6502-4f75-a5af-6412df51344d"}
