@@ -12,8 +12,15 @@ export interface Props {
   title?: string;
   /** @format textarea */
   description?: string;
+  description1?: string;
+  description2?: string;
+  /** @format rich-text */
+  quote?: string;
   tagline?: string;
+  background?: ImageWidget;
   image?: ImageWidget;
+  image2?: ImageWidget;
+  highlight?: ImageWidget;
   placement?: "left" | "right";
   cta?: CTA[];
   disableSpacing?: {
@@ -22,10 +29,6 @@ export interface Props {
   };
 }
 
-const PLACEMENT = {
-  left: "flex-col md:flex-row-reverse",
-  right: "flex-col md:flex-row",
-};
 
 const DEFAULT_IMAGE =
   "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/4763/772e246e-1959-46ac-a309-3f25ab20af6f";
@@ -35,9 +38,13 @@ export default function ImageWithParagraph({
   description =
     "This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away.",
   tagline = "Tagline",
+  background = DEFAULT_IMAGE,
+  description1 = "Here's an intermediate size heading you can edit",
+  description2 = "Here's an intermediate size heading you can edit",
+  quote = "Cidade maravilhosa, onde cada esquina é um pedaço de poesia.",
   image = DEFAULT_IMAGE,
-  placement = "left",
-  disableSpacing,
+  image2 = DEFAULT_IMAGE,
+  highlight = DEFAULT_IMAGE,
   cta = [
     { id: "change-me-1", href: "/", text: "Change me", style: "Outline" },
     { id: "change-me-2", href: "/", text: "Change me", style: "Ghost" },
@@ -46,32 +53,59 @@ export default function ImageWithParagraph({
   return (
     <div class="lg:container md:max-w-6xl lg:mx-auto mx-4 text-sm">
       <div
-        class={`flex ${
-          PLACEMENT[placement]
-        } gap-12 md:gap-20 text-left items-center z-10 ${
-          disableSpacing?.top ? "" : "pt-12 lg:pt-28"
-        } ${disableSpacing?.bottom ? "" : "pb-12 lg:pb-28"}`}
+        class={`flex flex-row-reverse justify-between`}
       >
-        <div class="w-full md:w-1/2 border border-secondary rounded-lg overflow-hidden">
+        <div class="w-full md:w-2/3 grid  grid-cols-3 grid-rows-3 border border-secondary rounded-lg overflow-hidden"
+          style={background ? {
+            backgroundImage: `url(${background})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'contain'
+
+          } : ''}>
           <Image
             width={640}
             height={640}
-            class="object-fit z-10"
+            class="object-fit aspect-square z-20 w-full row-start-2 col-start-1 transition hover:row-start-1 ease-in-out"
             sizes="(max-width: 640px) 100vw, 30vw"
             src={image}
             alt={image}
             decoding="async"
             loading="lazy"
           />
+          <Image
+            width={640}
+            height={640}
+            class="object-fit aspect-square z-20 w-full row-start-3 col-start-2  transition hover:col-start-3 ease-in-out"
+            sizes="(max-width: 640px) 100vw, 30vw"
+            src={image2}
+            alt={image2}
+            decoding="async"
+            loading="lazy"
+          />
+          <div class="aspect-square p-3 duration-200 object-fit w-full z-10 row-start-2 col-start-1 bg-[#ffd322]">
+            <p class="leading-normal">
+              {description1}
+            </p>
+          </div>
+          <div class="aspect-square p-3 duration-200 object-fit z-10 row-start-3 col-start-2 bg-[#fe851a]">
+            <p class="leading-normal">
+              {description2}
+            </p>
+          </div>
+          <div class="p-3 duration-200 object-fit w-full z-10 py-4 row-start-4 row-span-2 col-start-1 col-span-3 bg-teal-400">
+            <p class="text-white ml-4 pl-4 border-white leading-normal text-5xl border-l font-['Yesteryear']">
+              {quote} 
+            </p>
+          </div>
         </div>
-        <div class="w-full md:w-1/2 space-y-2 md:space-y-4 md:max-w-xl gap-4 z-10">
-          <p class="text-sm font-semibold">
+        <div class="flex items-start flex-col justify-between w-full md:w-1/3 space-y-2 md:space-y-4 md:max-w-xl gap-4 z-10">
+          <p class=" text-sm font-semibold pl-2.5 border-l">
             {tagline}
           </p>
-          <p class="text-4xl leading-snug">
+          <p class="text-4xl leading-snug pl-2.5">
             {title}
           </p>
-          <p class="leading-normal">
+          <p class="leading-normal pl-2.5">
             {description}
           </p>
           <div class="flex gap-3 pt-4">
@@ -104,6 +138,16 @@ export default function ImageWithParagraph({
               </a>
             ))}
           </div>
+          <Image
+            width={640}
+            height={640}
+            class="object-fit z-20 w-full row-start-2 col-start-1 transition hover:row-start-1 ease-in-out"
+            sizes="(max-width: 640px) 100vw, 30vw"
+            src={highlight}
+            alt={highlight}
+            decoding="async"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
