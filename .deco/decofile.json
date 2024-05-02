@@ -2,7 +2,14 @@
   "About": {
     "__resolveType": "site/sections/ImageWithParagraph.tsx",
     "placement": "left",
-    "cta": []
+    "cta": [],
+    "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/7322/4cc56638-e0b2-4f2d-b294-a163c31c4f05",
+    "background": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/7322/fe3ad5e1-bf8e-44f4-b7ed-1ff1dad83453",
+    "image2": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/7322/fbaf2b6d-be14-4d6c-8c30-03ad8a182a4d",
+    "highlight": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/7322/1b2ad443-07df-4877-9148-34d8f8fb0ae8",
+    "title": "<h2>Rio de Janeiro</h2>",
+    "tagline": "Welcome to",
+    "frame": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/7322/5524738a-a7cf-451d-b066-7817e18a9475"
   },
   "Banner": {
     "__resolveType": "site/sections/Hero.tsx",
@@ -25,6 +32,11 @@
   "Faq - default": {
     "title": "FAQs",
     "__resolveType": "site/sections/Faq.tsx"
+  },
+  "Gallery": {
+    "__resolveType": "site/sections/ImageWithParagraph.tsx",
+    "placement": "right",
+    "cta": []
   },
   "Groovy Vibes": {
     "__resolveType": "site/sections/Theme/Theme.tsx",
@@ -312,11 +324,10 @@
         "__resolveType": "About"
       },
       {
-        "__resolveType": "site/sections/Logos.tsx"
+        "__resolveType": "Gallery"
       },
       {
-        "__resolveType": "site/sections/ImageWithParagraph.tsx",
-        "placement": "right"
+        "__resolveType": "site/sections/Logos.tsx"
       },
       {
         "__resolveType": "site/sections/BlogPosts.tsx"

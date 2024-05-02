@@ -14,10 +14,7 @@ export interface Props {
    * @default Click here to tweak this text however you want.
    */
   title?: string;
-  background?: ImageWidget; 
-  /**
-   * @default This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away.
-   */
+  background?: ImageWidget;  
   description?: string;
   image?: ImageWidget;
   placement?: "left" | "right";
@@ -86,7 +83,7 @@ export default function HeroFlats({
               }}
             >
             </div>
-            <p class="text-lg md:text-md leading-[150%]">
+            <p class="text-lg md:text-md leading-[150%] hidden">
               {description}
             </p>
             <div class="flex items-center gap-3">

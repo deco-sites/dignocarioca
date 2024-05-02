@@ -9,6 +9,7 @@ export interface CTA {
 }
 
 export interface Props {
+  /** @format rich-text */
   title?: string;
   /** @format textarea */
   description?: string;
@@ -16,11 +17,13 @@ export interface Props {
   description2?: string;
   /** @format rich-text */
   quote?: string;
+  autor?: string;
   tagline?: string;
   background?: ImageWidget;
   image?: ImageWidget;
   image2?: ImageWidget;
   highlight?: ImageWidget;
+  frame?: ImageWidget;
   placement?: "left" | "right";
   cta?: CTA[];
   disableSpacing?: {
@@ -39,33 +42,35 @@ export default function ImageWithParagraph({
     "This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away.",
   tagline = "Tagline",
   background = DEFAULT_IMAGE,
+  autor='Rio de Janeiro Lover',
   description1 = "Here's an intermediate size heading you can edit",
   description2 = "Here's an intermediate size heading you can edit",
   quote = "Cidade maravilhosa, onde cada esquina é um pedaço de poesia.",
   image = DEFAULT_IMAGE,
   image2 = DEFAULT_IMAGE,
   highlight = DEFAULT_IMAGE,
+  frame = DEFAULT_IMAGE,
   cta = [
     { id: "change-me-1", href: "/", text: "Change me", style: "Outline" },
     { id: "change-me-2", href: "/", text: "Change me", style: "Ghost" },
   ],
 }: Props) {
   return (
-    <div class="lg:container md:max-w-6xl lg:mx-auto mx-4 text-sm">
+    <div class="my-9 lg:container md:max-w-6xl lg:mx-auto mx-4 text-sm">
       <div
         class={`flex flex-row-reverse justify-between`}
       >
-        <div class="w-full md:w-2/3 grid  grid-cols-3 grid-rows-3 border border-secondary rounded-lg overflow-hidden"
+        <div class="w-7/12 grid  grid-cols-3 grid-rows-3 border border-secondary rounded-lg overflow-hidden"
           style={background ? {
             backgroundImage: `url(${background})`,
             backgroundPosition: 'center',
-            backgroundSize: 'contain'
+            backgroundSize: 'cover'
 
           } : ''}>
           <Image
             width={640}
             height={640}
-            class="object-fit aspect-square z-20 w-full row-start-2 col-start-1 transition hover:row-start-1 ease-in-out"
+            class="object-fit aspect-square z-20 w-full row-start-2 col-start-1 transition ease-in-out"
             sizes="(max-width: 640px) 100vw, 30vw"
             src={image}
             alt={image}
@@ -75,7 +80,7 @@ export default function ImageWithParagraph({
           <Image
             width={640}
             height={640}
-            class="object-fit aspect-square z-20 w-full row-start-3 col-start-2  transition hover:col-start-3 ease-in-out"
+            class="object-fit aspect-square z-20 w-full row-start-3 col-start-2  transition ease-in-out"
             sizes="(max-width: 640px) 100vw, 30vw"
             src={image2}
             alt={image2}
@@ -92,20 +97,25 @@ export default function ImageWithParagraph({
               {description2}
             </p>
           </div>
-          <div class="p-3 duration-200 object-fit w-full z-10 py-4 row-start-4 row-span-2 col-start-1 col-span-3 bg-teal-400">
+          <div class="p-3 py-5 duration-200 object-fit w-full z-10 py-4 row-start-4 row-span-2 col-start-1 col-span-3 bg-teal-400">
             <p class="text-white ml-4 pl-4 border-white leading-normal text-5xl border-l font-['Yesteryear']">
               {quote} 
             </p>
+            <p class="text-white ml-4 pl-4 border-white leading-normal text-2xl pt-3 border-l">
+              {autor}
+            </p>
           </div>
         </div>
-        <div class="flex items-start flex-col justify-between w-full md:w-1/3 space-y-2 md:space-y-4 md:max-w-xl gap-4 z-10">
+        <div class="pt-7 flex items-start flex-col justify-start w-5/12 md:max-w-xl gap-4 z-10">
           <p class=" text-sm font-semibold pl-2.5 border-l">
             {tagline}
           </p>
-          <p class="text-4xl leading-snug pl-2.5">
-            {title}
-          </p>
-          <p class="leading-normal pl-2.5">
+          <div class="text-3xl leading-snug pr-2.5" 
+          dangerouslySetInnerHTML={{
+                __html: title,
+              }}>
+          </div>
+          <p class="leading-normal pr-2.5">
             {description}
           </p>
           <div class="flex gap-3 pt-4">
@@ -138,16 +148,28 @@ export default function ImageWithParagraph({
               </a>
             ))}
           </div>
-          <Image
-            width={640}
-            height={640}
-            class="object-fit z-20 w-full row-start-2 col-start-1 transition hover:row-start-1 ease-in-out"
-            sizes="(max-width: 640px) 100vw, 30vw"
-            src={highlight}
-            alt={highlight}
-            decoding="async"
-            loading="lazy"
-          />
+          <div class="mt-auto relative">
+            <Image
+              width={640}
+              height={640}
+              class="  object-fit z-20 w-full"
+              sizes="(max-width: 640px) 100vw, 30vw"
+              src={highlight}
+              alt={highlight}
+              decoding="async"
+              loading="lazy"
+            />
+            <Image
+              width={640}
+              height={640}
+              class="mix-blend-lighten absolute top-0 left-0 object-cover z-20 w-full"
+              sizes="(max-width: 640px) 100vw, 30vw"
+              src={frame}
+              alt={frame}
+              decoding="async"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </div>
